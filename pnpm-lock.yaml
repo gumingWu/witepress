@@ -7,11 +7,13 @@ importers:
       '@antfu/eslint-config': ^0.35.3
       '@antfu/ni': ^0.20.0
       '@antfu/utils': ^0.7.2
+      '@types/minimist': ^1.2.2
       '@types/node': ^18.14.1
       bumpp: ^9.0.0
       eslint: ^8.34.0
       esno: ^0.16.3
       lint-staged: ^13.1.2
+      minimist: ^1.2.8
       pnpm: ^7.27.1
       rimraf: ^4.1.2
       simple-git-hooks: ^2.8.1
@@ -19,10 +21,13 @@ importers:
       unbuild: ^1.1.2
       vite: ^4.1.4
       vitest: ^0.28.5
+    dependencies:
+      minimist: 1.2.8
     devDependencies:
       '@antfu/eslint-config': 0.35.3_7kw3g6rralp5ps6mg3uyzz6azm
       '@antfu/ni': 0.20.0
       '@antfu/utils': 0.7.2
+      '@types/minimist': 1.2.2
       '@types/node': 18.14.1
       bumpp: 9.0.0
       eslint: 8.34.0
@@ -1000,6 +1005,10 @@ packages:
     resolution: {integrity: sha512-W864tg/Osz1+9f4lrGTZpCSO5/z4608eUp19tbozkq2HJK6i3z1kT0H9tlADXuYIb1YYOBByU4Jsqkk75q48qA==}
     dependencies:
       '@types/unist': 2.0.6
+    dev: true
+
+  /@types/minimist/1.2.2:
+    resolution: {integrity: sha512-jhuKLIRrhvCPLqwPcx6INqmKeiA5EWrsCOPhrlFSrbrmU4ZMPjj5Ul/oLCMDO98XRUIwVm78xICz4EPCektzeQ==}
     dev: true
 
   /@types/node/18.14.1:
@@ -3060,7 +3069,7 @@ packages:
     resolution: {integrity: sha512-aKS4WQjPenRxiQsC93MNfjx+nbF4PAdYzmd/1JIj8HYzqfbu86beTuNgXDzPknWk0n0uARlyewZo4s++ES36Ow==}
     hasBin: true
     dependencies:
-      minimist: 1.2.6
+      minimist: 1.2.8
     dev: true
 
   /json5/2.2.3:
@@ -3306,9 +3315,8 @@ packages:
       brace-expansion: 2.0.1
     dev: true
 
-  /minimist/1.2.6:
-    resolution: {integrity: sha512-Jsjnk4bw3YJqYzbdyBiNsPWHPfO++UGG749Cxs6peCu5Xg4nrena6OVxOYxrQTqww0Jmwt+Ref8rggumkTLz9Q==}
-    dev: true
+  /minimist/1.2.8:
+    resolution: {integrity: sha512-2yyAR8qBkN3YuheJanUpWC5U3bb5osDywNB8RzDVlDwDHbocAJveqqj1u8+SVD7jkWT4yvsHCpWqqWqAxb0zCA==}
 
   /mkdist/1.1.1_typescript@4.9.5:
     resolution: {integrity: sha512-9cEzCsBD0qpybR/lJMB0vRIDZiHP7hJHTN2mQtFU2qt0vr7lFnghxersOJbKLshaDsl4GlnY2OBzmRRUTfuaDg==}
@@ -4114,7 +4122,7 @@ packages:
     dependencies:
       '@types/json5': 0.0.29
       json5: 1.0.1
-      minimist: 1.2.6
+      minimist: 1.2.8
       strip-bom: 3.0.0
     dev: true
 

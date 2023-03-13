@@ -1,7 +1,7 @@
 {
   "name": "witepress",
   "type": "module",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "packageManager": "pnpm@7.12.0",
   "description": "",
   "author": "gumingWu",
@@ -32,6 +32,9 @@
       ]
     }
   },
+  "bin": {
+    "witepress": "index.js"
+  },
   "files": [
     "dist"
   ],
@@ -49,6 +52,7 @@
     "@antfu/eslint-config": "^0.35.3",
     "@antfu/ni": "^0.20.0",
     "@antfu/utils": "^0.7.2",
+    "@types/minimist": "^1.2.2",
     "@types/node": "^18.14.1",
     "bumpp": "^9.0.0",
     "eslint": "^8.34.0",
@@ -67,5 +71,8 @@
   },
   "lint-staged": {
     "*": "eslint --fix"
+  },
+  "dependencies": {
+    "minimist": "^1.2.8"
   }
 }
