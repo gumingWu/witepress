@@ -13,6 +13,7 @@ const logVersion = (logger = createLogger()) => {
 
 const command = argv._[0]
 const root = argv._[command ? 1 : 0]
+
 if (root)
   argv.root = root
 

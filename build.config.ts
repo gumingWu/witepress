@@ -4,6 +4,7 @@ export default defineBuildConfig({
   entries: [
     'src/index',
     'src/node/cli',
+    'src/client/app/index',
   ],
   declaration: true,
   clean: true,
