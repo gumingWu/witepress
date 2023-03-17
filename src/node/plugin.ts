@@ -1,12 +1,37 @@
-import { type Plugin } from 'vite'
-import { APP_PATH } from './alias'
+import { type Plugin, defineConfig, searchForWorkspaceRoot } from 'vite'
+import { APP_PATH, CLIENT_PATH, resolveAliases } from './alias'
 
 const cleanUrl = (url: string): string =>
   url.replace(/#.*$/s, '').replace(/\?.*$/s, '')
 
 export function createWitepressPlugin() {
+  // const vuePlugin = await import('@vitejs/plugin-vue').then((r) => {
+  //   r.default({
+  //     include: [/\.vue$/, /\.md$/],
+  //   })
+  // })
+
   const witepressPlugin: Plugin = {
     name: 'witepress',
+
+    config() {
+      const baseConfig = defineConfig({
+        resolve: {
+          alias: resolveAliases(),
+        },
+        server: {
+          fs: {
+            allow: [
+              CLIENT_PATH,
+              searchForWorkspaceRoot(process.cwd()),
+            ],
+          },
+        },
+      })
+
+      return baseConfig
+    },
+
     configureServer(server) {
       return () => {
         server.middlewares.use(async (req, res, next) => {
