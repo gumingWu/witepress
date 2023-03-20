@@ -1,5 +1,6 @@
 import { type App, createApp as createClientApp, createSSRApp, defineComponent, h } from 'vue'
 import RawTheme from '@theme/index'
+import { Content } from './components/Content'
 import { inBrowser } from './utils'
 
 function resolveThemeExtends(theme: typeof RawTheme) {
@@ -20,6 +21,8 @@ const WitePressApp = defineComponent({
 
 async function createApp() {
   const app = newApp()
+
+  app.component('WContent', Content)
 
   return {
     app,
