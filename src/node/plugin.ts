@@ -1,4 +1,5 @@
 import { type Plugin, defineConfig, searchForWorkspaceRoot } from 'vite'
+import pluginVue from '@vitejs/plugin-vue'
 import { APP_PATH, CLIENT_PATH, resolveAliases } from './alias'
 
 const cleanUrl = (url: string): string =>
@@ -64,5 +65,6 @@ export function createWitepressPlugin() {
 
   return [
     witepressPlugin,
+    pluginVue(),
   ]
 }
