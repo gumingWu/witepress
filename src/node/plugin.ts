@@ -1,19 +1,20 @@
-import { type Plugin, defineConfig, searchForWorkspaceRoot } from 'vite'
+import { type Plugin, type UserConfig, defineConfig, searchForWorkspaceRoot } from 'vite'
 import pluginVue from '@vitejs/plugin-vue'
 import { APP_PATH, CLIENT_PATH, resolveAliases } from './alias'
+import { createMarkdownToVueRenderFn } from './markdownToVue'
 
 const cleanUrl = (url: string): string =>
   url.replace(/#.*$/s, '').replace(/\?.*$/s, '')
 
 export function createWitepressPlugin() {
-  // const vuePlugin = await import('@vitejs/plugin-vue').then((r) => {
-  //   r.default({
-  //     include: [/\.vue$/, /\.md$/],
-  //   })
-  // })
+  let markdownToVue: any
 
   const witepressPlugin: Plugin = {
     name: 'witepress',
+
+    async configResolved() {
+      markdownToVue = await createMarkdownToVueRenderFn()
+    },
 
     config() {
       const baseConfig = defineConfig({
@@ -30,7 +31,15 @@ export function createWitepressPlugin() {
         },
       })
 
-      return baseConfig
+      return baseConfig as UserConfig
+    },
+
+    async transform(code, id) {
+      if (id.endsWith('.md')) {
+        const { vueSrc } = await markdownToVue(code, id)
+        return vueSrc
+      }
+      return code
     },
 
     configureServer(server) {
@@ -65,6 +74,8 @@ export function createWitepressPlugin() {
 
   return [
     witepressPlugin,
-    pluginVue(),
+    pluginVue({
+      include: [/\.vue$/, /\.md$/],
+    }),
   ]
 }

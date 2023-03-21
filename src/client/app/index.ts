@@ -1,6 +1,7 @@
 import { type App, createApp as createClientApp, createSSRApp, defineComponent, h } from 'vue'
 import RawTheme from '@theme/index'
 import { Content } from './components/Content'
+import { CompTest } from './components/CompTest'
 import { type Router, RouterSymbol, createRouter } from './router'
 import { inBrowser, pathToFile } from './utils'
 
@@ -27,6 +28,7 @@ async function createApp() {
   app.provide(RouterSymbol, router)
 
   app.component('WContent', Content)
+  app.component('WCompTest', CompTest)
 
   return {
     app,
