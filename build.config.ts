@@ -2,7 +2,6 @@ import { defineBuildConfig } from 'unbuild'
 
 export default defineBuildConfig({
   entries: [
-    'src/index',
     'src/node/cli',
     'src/client/app/index',
   ],
@@ -12,4 +11,5 @@ export default defineBuildConfig({
     emitCJS: true,
   },
   externals: ['vite'],
+  failOnWarn: false,
 })
